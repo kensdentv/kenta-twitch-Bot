@@ -7,9 +7,7 @@ client = ElevenLabs(
     api_key = os.getenv("ELEVENLABS_API_KEY")
 )
 
-voice_name = "judy"
-
-def speak(message):
+def ai_speak(message, voice_name = "judy"):
 
     # Generate audio from message
     audio = client.generate(
