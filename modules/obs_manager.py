@@ -9,7 +9,7 @@ port = 4455
 ws = obsws(host, port)
 ws.connect()
 
-def flash_item(source_name):
+def flash_item(source_name, duration: int = 3):
     # Get Current Scene
     current_scene = ws.call(requests.GetCurrentProgramScene())
     scene_name = current_scene.getSceneName()
@@ -27,7 +27,7 @@ def flash_item(source_name):
     # Toggle Item On
     if selected_item is None: return
     ws.call(requests.SetSceneItemEnabled(**{"sceneName": scene_name, "sceneItemId": selected_item["sceneItemId"], "sceneItemEnabled": True}))
-    time.sleep(3)
+    time.sleep(duration)
     ws.call(requests.SetSceneItemEnabled(**{"sceneName": scene_name, "sceneItemId": selected_item["sceneItemId"], "sceneItemEnabled": False}))
 
 

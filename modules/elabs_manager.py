@@ -7,7 +7,22 @@ client = ElevenLabs(
     api_key = os.getenv("ELEVENLABS_API_KEY")
 )
 
+available_voices = [
+    'judy',
+    'nick',
+    'bellwether',
+    'sonic',
+    'hammond',
+    'goku',
+    'kratos',
+    'peter',
+    'tails',
+    'bugs'
+]
+
 def ai_speak(message, voice_name = "judy"):
+
+    if voice_name not in available_voices: voice_name = "judy"
 
     # Generate audio from message
     audio = client.generate(
@@ -17,5 +32,4 @@ def ai_speak(message, voice_name = "judy"):
     )
 
     # Print message and play audio
-    print(f'\n{message}')
     play(audio)

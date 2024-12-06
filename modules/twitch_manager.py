@@ -18,12 +18,14 @@ USER_SCOPES = [
     AuthScope.CHAT_READ, 
     AuthScope.CHAT_EDIT,
     AuthScope.BITS_READ,
-    AuthScope.CHANNEL_READ_REDEMPTIONS
+    AuthScope.CHANNEL_READ_REDEMPTIONS,
+    AuthScope.CHANNEL_READ_PREDICTIONS
+
 ]
 
 APP_ID = os.getenv('TWITCH_APP_ID')
 APP_SECRET = os.getenv('TWITCH_APP_SECRET')
-TARGET_CHANNEL = 'komdog'
+TARGET_CHANNEL = 'kentadtv'
 
 async def on_ready( ready_event: EventData ):
     print( f"Connected to channel..." )
@@ -52,7 +54,8 @@ async def main():
     eventsub = EventSubWebsocket( twitch )
     eventsub.start()
     await eventsub.listen_channel_points_custom_reward_redemption_add( user.id, reward_manager.on_channel_points )
-    
+    await eventsub.listen_channel_prediction_begin( user.id, reward_manager.on_prediction_begin )
+
     # lets run till we press enter in the console
     try: 
         input('press ENTER to stop\\n')
