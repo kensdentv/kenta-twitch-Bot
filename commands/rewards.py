@@ -1,6 +1,6 @@
 from modules.say import speak
 from modules.open_ai_manager import ask
-from modules.elabs_manager import ai_speak
+from modules.elabs_manager import ai_make_audio, play
 
 import modules.obs_manager as obs
 import modules.rich_tts_manager as rich_tts
@@ -23,6 +23,8 @@ async def ai_ask(prompt: str) -> None:
     speak(prompt)
     character = "judy"
     response = await ask(prompt, character)
+    
+    audio = ai_make_audio(response, character)
     obs.activate_filter('Slide In', 'Group', True)
-    ai_speak(response, character)
+    play(audio)
     obs.activate_filter('Slide Out', 'Group', True)

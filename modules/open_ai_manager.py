@@ -1,4 +1,3 @@
-from modules.elabs_manager import ai_speak
 from openai import OpenAI
 client = OpenAI()
 
@@ -27,10 +26,13 @@ every message you send is a response to a user.
 
 Keep these rules in mind:
 - do NOT respond with emojis
+- keep your responses less than 8 sentences
 
 """
 
 async def ask(prompt: str, character: str) -> str:
+
+    print('Generating Stream...')
 
     # Generate a response from the GPT-4o model
     stream = client.chat.completions.create(
@@ -39,17 +41,19 @@ async def ask(prompt: str, character: str) -> str:
             { "role": 'system', "content": personality },
             { "role": 'user', "content": prompt }
         ],
-        temperature = 1.5,
+        temperature = 0.8,
         stream=True
     )
     
     # Extract the response from the stream
+    print('Generating response...')
     response = ''
     for chunk in stream:
         if chunk.choices[0].delta.content is not None:
-            response += chunk.choices[0].delta.content
+            response += chunk.choices[0].delta.content or ""
 
     # Append prompt and response to a file to use as memory
+    print('Saving...')
     with open(memory_directory, 'a') as file:
         file.write(f'User: {prompt}\n{character}: {response}\n\n')
 

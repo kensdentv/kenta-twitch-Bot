@@ -31,7 +31,10 @@ async def parse_message_pieces(tts: dict) -> None:
 
 async def run_rich_tts(message: str, tts_character: str) -> None:
     if message == ' ': return
-    if not message.startswith('('): elabs.ai_speak( message , tts_character); return
+    if not message.startswith('('): 
+        audio = elabs.ai_make_audio( message , tts_character); 
+        elabs.play(audio)
+        return
     winsound.PlaySound(f'./assets/sounds/{message[1:-1]}.wav', winsound.SND_ALIAS)
 
         
