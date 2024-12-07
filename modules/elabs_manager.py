@@ -11,6 +11,8 @@ available_voices = [
     'judy',
     'nick',
     'bellwether',
+    'mrsotterton',
+    'nicole',
     'sonic',
     'hammond',
     'goku',
