@@ -22,7 +22,7 @@ async def on_channel_points(data: ChannelPointsCustomRewardRedemptionData) -> No
         case 'Stretch!': await rewards.stretch()
         case 'Applause!': await rewards.applause()
         case 'Hydrate': await rewards.hydrate()
-        case 'Ask The AI': await rewards.ai_ask(user_input)
+        case 'Talk to Judy Hopps': await rewards.ai_ask(user_input)
         case 'Girl Voice': await rewards.girlvoice()
         case 'Tell Me What To Do': await rewards.chat_command_me(user_input)
 

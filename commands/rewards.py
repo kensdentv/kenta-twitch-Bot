@@ -1,7 +1,7 @@
 from modules.say import speak
 from modules.open_ai_manager import ask
+from modules.elabs_manager import ai_speak
 
-import modules.elabs_manager as elabs
 import modules.obs_manager as obs
 import modules.rich_tts_manager as rich_tts
 import winsound
@@ -21,5 +21,8 @@ async def chat_command_me(message: str) -> None: speak("Chat Commands you." + me
 
 async def ai_ask(prompt: str) -> None:
     speak(prompt)
-    response = await ask(prompt)
-    elabs.ai_speak(response, "hammond")
+    character = "judy"
+    response = await ask(prompt, character)
+    obs.activate_filter('Slide In', 'Group', True)
+    ai_speak(response, character)
+    obs.activate_filter('Slide Out', 'Group', True)

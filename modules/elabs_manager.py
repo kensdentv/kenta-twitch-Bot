@@ -8,6 +8,7 @@ client = ElevenLabs(
 )
 
 available_voices = [
+    'Alice',
     'judy',
     'nick',
     'bellwether',
@@ -22,9 +23,9 @@ available_voices = [
     'bugs'
 ]
 
-def ai_speak(message, voice_name = "judy"):
+def ai_speak(message, voice_name = "Alice"):
 
-    if voice_name not in available_voices: voice_name = "judy"
+    if voice_name not in available_voices: voice_name = "Alice"
 
     # Generate audio from message
     audio = client.generate(

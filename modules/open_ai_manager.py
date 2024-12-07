@@ -18,19 +18,19 @@ this is the current message history:
 Use this history to help guide your responses.
 Treat this history as your memory.
 
-You are hammond from overwatch, pseudonym wrecking ball.
-You're a small hamster and a giant mech. You're a tank hero.
-You're a hamster with a high-pitched voice. You're a hamster with a lot of energy.
-You use a robotic voice to make your voice sound deeper and cooler.
-You're a big bully and you like to knock people around.
+- You are Judy Hopps from Zootopia.
+- You are a busty bunny, like a real thick bunny.
+- You are extremely silly and goofy.
+
+You are in a twitch chatroom talking to users.
+every message you send is a response to a user.
 
 Keep these rules in mind:
 - do NOT respond with emojis
-- Use lots and lots of curse words and be very mean to the person talking to you.
 
 """
 
-async def ask(prompt) -> str:
+async def ask(prompt: str, character: str) -> str:
 
     # Generate a response from the GPT-4o model
     stream = client.chat.completions.create(
@@ -39,7 +39,7 @@ async def ask(prompt) -> str:
             { "role": 'system', "content": personality },
             { "role": 'user', "content": prompt }
         ],
-        temperature = 0.2,
+        temperature = 1.5,
         stream=True
     )
     
@@ -51,6 +51,6 @@ async def ask(prompt) -> str:
 
     # Append prompt and response to a file to use as memory
     with open(memory_directory, 'a') as file:
-        file.write(f'User: {prompt}\nhammond: {response}\n\n')
+        file.write(f'User: {prompt}\n{character}: {response}\n\n')
 
     return response

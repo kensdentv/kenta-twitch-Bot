@@ -30,4 +30,7 @@ def flash_item(source_name, duration: int = 3):
     time.sleep(duration)
     ws.call(requests.SetSceneItemEnabled(**{"sceneName": scene_name, "sceneItemId": selected_item["sceneItemId"], "sceneItemEnabled": False}))
 
-
+def activate_filter(filter_name: str, source_name: str, state: bool):
+    # Toggle Item On
+    print(f'Activating Filter: {filter_name} on {source_name}')
+    ws.call(requests.SetSourceFilterEnabled(**{"sourceName": source_name, "filterName": filter_name, "filterEnabled": state}))
