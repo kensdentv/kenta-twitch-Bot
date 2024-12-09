@@ -2,6 +2,7 @@ import os
 import asyncio
 import modules.twitch_command_handler as command_handler
 import modules.twitch_reward_manager as reward_manager
+import modules.twitch_prediction_manager as prediction_manager
 
 from uuid import UUID
 
@@ -54,7 +55,7 @@ async def main():
     eventsub = EventSubWebsocket( twitch )
     eventsub.start()
     await eventsub.listen_channel_points_custom_reward_redemption_add( user.id, reward_manager.on_channel_points )
-    await eventsub.listen_channel_prediction_begin( user.id, reward_manager.on_prediction_begin )
+    await eventsub.listen_channel_prediction_begin( user.id, prediction_manager.on_prediction_begin )
 
     # lets run till we press enter in the console
     try: 

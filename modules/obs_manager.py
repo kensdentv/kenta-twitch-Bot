@@ -10,9 +10,8 @@ ws = obsws(host, port)
 ws.connect()
 
 def flash_item(source_name, duration: int = 3):
-    # Get Current Scene
-    current_scene = ws.call(requests.GetCurrentProgramScene())
-    scene_name = current_scene.getSceneName()
+
+    scene_name = "Layer - VTuber"
 
     # Get scene items
     scene_item_list = ws.call(requests.GetSceneItemList(**{"sceneName": scene_name}))

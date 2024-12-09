@@ -5,7 +5,8 @@ from modules.elabs_manager import ai_make_audio, play
 import modules.obs_manager as obs
 import modules.rich_tts_manager as rich_tts
 import winsound
-import re
+import random
+
 
 async def stretch() -> None: speak('Stretch time')
 async def hydrate() -> None: speak('Hydration time, drink some water.')
@@ -28,3 +29,14 @@ async def ai_ask(prompt: str) -> None:
     obs.activate_filter('Slide In', 'Group', True)
     play(audio)
     obs.activate_filter('Slide Out', 'Group', True)
+
+def kiss() -> None:
+    kiss_sounds = [
+        './assets/reward_sounds/kiss_1.wav',
+        './assets/reward_sounds/kiss_2.wav',
+        './assets/reward_sounds/kiss_3.wav',
+    ]
+    chosen_kiss_sound = random.choice(kiss_sounds)
+    winsound.PlaySound(chosen_kiss_sound, winsound.SND_ALIAS)
+    print(chosen_kiss_sound)
+    obs.flash_item('Kiss', 3)
