@@ -4,6 +4,7 @@ import commands.rewards as rewards
 
 from twitchAPI.chat import ChatMessage
 from modules.say import speak
+from modules.vrc_osc_manager import set_vrc_state
 
 
 async def handle_command(chat_message: ChatMessage) -> None:
@@ -18,7 +19,13 @@ async def handle_command(chat_message: ChatMessage) -> None:
 
     command = command_array[0][1:].lower()
     match command:
-        case 'story': await story()
+        # case 'story': await story()
+        case 'hoodieon': await set_vrc_state( 'Hoodie' , True )
+        case 'hoodieoff': await set_vrc_state( 'Hoodie' , False )
+        case 'harnesson': await set_vrc_state( 'Harness' , True )
+        case 'harnessoff': await set_vrc_state( 'Harness' , False )
+        case 'female': await set_vrc_state( 'Female' , True )
+        case 'male': await set_vrc_state( 'Female' , False )
         case _: pass
 
 async def story() -> None:
