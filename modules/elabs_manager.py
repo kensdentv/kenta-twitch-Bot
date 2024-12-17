@@ -10,6 +10,7 @@ client = ElevenLabs(
 available_voices = [
     'Alice',
     'narrator',
+    'sylvia',
     'diane',
     'mrwolf',
     'judy',
