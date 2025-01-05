@@ -16,3 +16,4 @@ async def get_response(chat_message: ChatMessage, command: str) -> None:
         case '!twitter': await chat_message.chat.send_message(chat_message.room, links['twitter'])
         case '!youtube': await chat_message.chat.send_message(chat_message.room, links['youtube'])
         case '!socials': await chat_message.chat.send_message(chat_message.room, ' '.join(links.values()))
+        case '!commands': await chat_message.chat.send_message(chat_message.room, 'We Have Custom Chat Commands! You can find them all here: https://docs.google.com/spreadsheets/d/1tWjnshP2L7E1rxQuV7nLvjpeo-70vrl5UhHIS_W0Gd4/edit?usp=sharing')

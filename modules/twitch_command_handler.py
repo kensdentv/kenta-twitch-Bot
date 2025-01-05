@@ -12,16 +12,17 @@ async def handle_command(chat_message: ChatMessage) -> None:
     message = chat_message.text
     command_array = message.split(' ')
 
-    await check_for_sound(message)
     await check_for_response(chat_message)
 
     if not command_array[0].startswith('!'): return # Not a command
 
+    await check_for_sound(message)
+
     command = command_array[0][1:].lower()
     match command:
         # case 'story': await story()
-        case 'hoodieon': await set_vrc_state( 'Hoodie' , True )
-        case 'hoodieoff': await set_vrc_state( 'Hoodie' , False )
+        # case 'hoodieon': await set_vrc_state( 'Hoodie' , True )
+        # case 'hoodieoff': await set_vrc_state( 'Hoodie' , False )
         case 'harnesson': await set_vrc_state( 'Harness' , True )
         case 'harnessoff': await set_vrc_state( 'Harness' , False )
         case 'female': await set_vrc_state( 'Female' , True )
@@ -35,8 +36,8 @@ async def story() -> None:
 
 # Check for a play sound command
 async def check_for_sound(message: str):
-    command_array = message.split(' ')
-    await fun.play_sound(command_array[0])
+    command_array = message.split('!')
+    await fun.play_sound(command_array[1])
 
 # Check for a chat response command
 async def check_for_response(chat_message: ChatMessage):

@@ -1,10 +1,8 @@
 import os
-import asyncio
 import modules.twitch_command_handler as command_handler
 import modules.twitch_reward_manager as reward_manager
 import modules.twitch_prediction_manager as prediction_manager
-
-from uuid import UUID
+import asyncio
 
 # Twitch API
 from twitchAPI.helper import first
@@ -24,6 +22,7 @@ USER_SCOPES = [
 
 ]
 
+chat = None
 APP_ID = os.getenv('TWITCH_APP_ID')
 APP_SECRET = os.getenv('TWITCH_APP_SECRET')
 TARGET_CHANNEL = 'kentadtv'
@@ -35,8 +34,6 @@ async def on_ready( ready_event: EventData ):
 async def on_message( chat_message: ChatMessage ):
     await command_handler.handle_command(chat_message)
 
-
-
 async def main():
     # Login to twitch
     twitch = await Twitch( APP_ID , APP_SECRET )
@@ -46,6 +43,7 @@ async def main():
     user = await first(twitch.get_users()) # Get me!
     
     # Start the chat listener
+    global chat
     chat = await Chat( twitch )
     chat.register_event(ChatEvent.READY, on_ready)
     chat.register_event(ChatEvent.MESSAGE, on_message)
@@ -58,15 +56,11 @@ async def main():
     await eventsub.listen_channel_prediction_begin( user.id, prediction_manager.on_prediction_begin )
 
     # lets run till we press enter in the console
-    try: 
-        input('press ENTER to stop\\n')
-    except KeyboardInterrupt:
-        pass
+    try: await asyncio.Event().wait()
+    except KeyboardInterrupt: pass
     finally:
-        # now we can close the chat bot and the twitch api client
+        print("Cleaning up before shutdown...")
         chat.stop()
         await eventsub.stop()
         await twitch.close()
    
-
-asyncio.run( main() )

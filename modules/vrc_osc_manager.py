@@ -1,22 +1,23 @@
 import winsound
 import threading
 from pythonosc.udp_client import SimpleUDPClient
-print('Starting VRC OSC')
+print('Starting VRC OSC...')
 
-# OSC setup
-ip = "127.0.0.1"
-port = 9000
-osc_client = SimpleUDPClient(ip, port)
+    # OSC setup
+def __init__():
+    ip = "127.0.0.1"
+    port = 9000
+    osc_client = SimpleUDPClient(ip, port)
 
 osc_toggle_options = {
-    'Hoodie': {
-        'params': [
-            ['/avatar/parameters/Hoodie_Top', True],
-            ['/avatar/parameters/VF99_Outfit/Crop_Hoodie/Undershirt', True],
-        ], 
-        'equip_sound': './assets/vrchat_sounds/equip_clothes.wav', 
-        'unequip_sound': './assets/vrchat_sounds/un_equip_clothes.wav'
-    },
+    # 'Hoodie': {
+    #     'params': [
+    #         ['/avatar/parameters/Hoodie_Top', True],
+    #         ['/avatar/parameters/VF99_Outfit/Crop_Hoodie/Undershirt', True],
+    #     ], 
+    #     'equip_sound': './assets/vrchat_sounds/equip_clothes.wav', 
+    #     'unequip_sound': './assets/vrchat_sounds/un_equip_clothes.wav'
+    # },
     'Harness': {
         'params': [
             ['/avatar/parameters/VF102_Outfit/Harness/Lower', True],

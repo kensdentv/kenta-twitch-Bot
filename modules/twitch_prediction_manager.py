@@ -14,4 +14,4 @@ def play_gambline_sound():
     winsound.PlaySound(f'./assets/predictions/gambling.wav', winsound.SND_ALIAS)
 
 def show_coins():
-    obs.flash_item('Coins', 4)
+    obs.flash_item("Layer - Overlay", 'Coins', 4)

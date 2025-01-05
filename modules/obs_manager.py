@@ -1,17 +1,15 @@
 from obswebsocket import obsws, requests
 import time
 
-print('starting OBS')
 
 host = "localhost"
 port = 4455
 
+print('Starting OBS...')
 ws = obsws(host, port)
 ws.connect()
 
-def flash_item(source_name, duration: int = 3):
-
-    scene_name = "Layer - VTuber"
+def flash_item(scene_name, source_name, duration: int = 3):
 
     # Get scene items
     scene_item_list = ws.call(requests.GetSceneItemList(**{"sceneName": scene_name}))

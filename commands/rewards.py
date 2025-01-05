@@ -15,7 +15,7 @@ async def applause() -> None: winsound.PlaySound(f'./assets/reward_sounds/applau
 
 async def petpet() -> None:
     speak('PetPet')
-    obs.flash_item('PetPet')
+    obs.flash_item("Layer - VTuber", 'PetPet')
 
 async def girlvoice() -> None: speak('Valley Girl Voice Redeeemed')
 async def chat_command_me(message: str) -> None: speak("Chat Commands you." + message)
@@ -39,4 +39,4 @@ def kiss() -> None:
     chosen_kiss_sound = random.choice(kiss_sounds)
     winsound.PlaySound(chosen_kiss_sound, winsound.SND_ALIAS)
     print(chosen_kiss_sound)
-    obs.flash_item('Kiss', 3)
+    obs.flash_item("Layer - VTuber", 'Kiss', 3)
