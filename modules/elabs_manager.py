@@ -10,6 +10,8 @@ client = ElevenLabs(
 available_voices = [
     'Alice',
     'narrator',
+    'porsha',
+    'spyro',
     'sylvia',
     'diane',
     'mrwolf',
@@ -33,9 +35,9 @@ def ai_make_audio(message, voice_name = "Alice"):
 
     # Generate audio from message
     audio = client.generate(
-        text = message,
+        text = f'{message}',
         voice = voice_name,
-        model = "eleven_multilingual_v2"
+        model = "eleven_monolingual_v1"
     )
 
     return audio

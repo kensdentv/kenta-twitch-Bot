@@ -8,6 +8,7 @@ import modules.obs_manager
 # import modules.vrc_osc_manager
 import modules.notif_manager as notif
 import modules.twitch_manager as twitch
+import modules.spotify_manager as spotify
 
 
 async def __init__():

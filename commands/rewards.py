@@ -13,17 +13,13 @@ async def hydrate() -> None: speak('Hydration time, drink some water.')
 async def tts(message: str) -> None: await rich_tts.parse_rich_tts(message)
 async def applause() -> None: winsound.PlaySound(f'./assets/reward_sounds/applause.wav', winsound.SND_ALIAS)
 
-async def petpet() -> None:
-    speak('PetPet')
-    obs.flash_item("Layer - VTuber", 'PetPet')
-
 async def girlvoice() -> None: speak('Valley Girl Voice Redeeemed')
 async def chat_command_me(message: str) -> None: speak("Chat Commands you." + message)
 
-async def ai_ask(prompt: str) -> None:
+async def ai_ask(user_name: str, prompt: str) -> None:
     speak(prompt)
     character = "judy"
-    response = await ask(prompt, character)
+    response = await ask(user_name, prompt, character)
     
     audio = ai_make_audio(response, character)
     obs.activate_filter('Slide In', 'Group', True)
@@ -40,3 +36,9 @@ def kiss() -> None:
     winsound.PlaySound(chosen_kiss_sound, winsound.SND_ALIAS)
     print(chosen_kiss_sound)
     obs.flash_item("Layer - VTuber", 'Kiss', 3)
+
+def lois():
+    winsound.PlaySound('./assets/reward_sounds/lois.wav', winsound.SND_ASYNC)
+    obs.flash_item("Layer - VTuber", 'Lois', 0.5)
+
+
