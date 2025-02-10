@@ -10,7 +10,6 @@ import modules.notif_manager as notif
 import modules.twitch_manager as twitch
 import modules.spotify_manager as spotify
 
-
 async def __init__():
     print('Starting Twitch manager...')
     task1 = asyncio.create_task( twitch.main() )
@@ -21,7 +20,6 @@ async def __init__():
     try: await asyncio.Event().wait()  # This will keep the program running
     except KeyboardInterrupt: print("Script interrupted by user.")
     finally: print("Cleaning up before shutdown...")
-
 
 
 try: asyncio.run(__init__())

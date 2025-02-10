@@ -40,5 +40,8 @@ def ai_make_audio(message, voice_name = "Alice"):
         model = "eleven_monolingual_v1"
     )
 
-    return audio
+    play(audio)
+    # return audio
+
+
 
