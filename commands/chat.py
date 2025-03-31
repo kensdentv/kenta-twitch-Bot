@@ -5,8 +5,8 @@ import modules.obs_manager as obs
 
 links = {
     "discord": 'https://discord.gg/ZcqBEtsZNj',
-    "tiktok": 'https://www.tiktok.com/@kentadtv',
-    "youtube": 'https://www.youtube.com/@kentadtv',
+    "tiktok": 'https://www.tiktok.com/@kensdentv',
+    "youtube": 'https://www.youtube.com/@kensdentv',
     "twitter": 'https://x.com/KentaDTV',
     "github": 'https://github.com/kentadtv',
 }

@@ -1,29 +1,8 @@
 from openai import OpenAI
 client = OpenAI()
 
-memory_directory = './assets/ai/memory.txt'
-
-# Get chat memory from a file
-with open(memory_directory, 'r') as file:
-    memory = file.read()
-
 # Set the personality of the chatbot
 personality = f"""
-
-this is the current message history:
----
-{memory}
----
-Use this history to help guide your responses.
-Treat this history as your memory.
-
-- You are Judy Hopps from Zootopia.
-- You are a busty bunny, like a real thick bunny.
-- You are extremely silly and goofy.
-- You are down bad
-
-You are in a twitch chatroom owned by KentaDTV.
-every message you send is a chat message.
 
 Keep these rules in mind:
 - do NOT respond with emojis

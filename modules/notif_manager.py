@@ -6,7 +6,7 @@ notif_index = 1
 notification_messages =[
     'Remember to check out the Discord server! https://discord.gg/ZcqBEtsZNj',
     'Join our VRChat group for meetups! https://vrc.group/KENDTV.9059',
-    'You can play sound effects in chat for FREE type !commands for a list of silly sounds',
+    # 'You can play sound effects in chat for FREE type !commands for a list of silly sounds',
     'If you enjoy the stream, consider following! It helps me out a lot!',
     'Want to support the stream? Consider subscribing!',
 ]

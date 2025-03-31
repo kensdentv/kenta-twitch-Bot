@@ -3,8 +3,6 @@ from modules.say import speak
 import winsound
 
 from twitchAPI.object.eventsub import ChannelPointsCustomRewardRedemptionData
-from pprint import pprint
-
 
 async def on_channel_points(data: ChannelPointsCustomRewardRedemptionData) -> None:
     # Get reward info
@@ -26,8 +24,9 @@ async def on_channel_points(data: ChannelPointsCustomRewardRedemptionData) -> No
         case 'Hydrate': await rewards.hydrate()
         case 'Talk to Judy Hopps': await rewards.ai_ask(user_name, user_input)
         case 'Girl Voice': await rewards.girlvoice()
-        case 'Tell Me What To Do': await rewards.chat_command_me(user_input)
+        case 'Tell Me What To Do': await rewards.chat_command_me(user_input) 
         case 'Smooch Me': rewards.kiss()
+        case 'Laugh Track': rewards.laugh()
         case 'Lois': rewards.lois() 
 
 

@@ -41,4 +41,5 @@ def lois():
     winsound.PlaySound('./assets/reward_sounds/lois.wav', winsound.SND_ASYNC)
     obs.flash_item("Layer - VTuber", 'Lois', 0.5)
 
-
+def laugh() -> None:
+    winsound.PlaySound('./assets/reward_sounds/laugh.wav', winsound.SND_ASYNC)
